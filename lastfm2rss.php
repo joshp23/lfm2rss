@@ -1,5 +1,5 @@
 <?php
-// lastfm2rss 0.0.3
+// lastfm2rss 0.0.4
 
 // You must include an api key
 $api_key = '';
@@ -35,7 +35,7 @@ $postfields = array(
 
 $ch = curl_init();    
 curl_setopt($ch, CURLOPT_URL, 'https://ws.audioscrobbler.com/2.0');
-// curl_setopt($OAcURL, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded;charset=UTF-8'));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded;charset=UTF-8'));
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postfields));
 curl_setopt($ch, CURLOPT_HEADER, false);
@@ -66,11 +66,11 @@ if($code != 200){
 
 	if ($type == 'loved') { 
 		$title = 'Last.fm Recently Loved tracks for ' . $user_full_name;
-		$updated = date(DATE_ATOM, $all['lovedtracks']['track'][0]['date']['uts']);
+		$updated = gmdate(DATE_RFC822, $all['lovedtracks']['track'][0]['date']['uts']);
 		$link = 'https://www.last.fm/user/' . $user_id . '/loved';
 	} elseif ($type == 'recent') {
 		$title = 'Last.fm Recently Listened tracks for ' . $user_full_name;
-		$updated = date(DATE_ATOM, $all['recenttracks']['track'][0]['date']['uts']);
+		$updated = gmdate(DATE_RFC822, $all['recenttracks']['track'][0]['date']['uts']);
 		$link = 'https://www.last.fm/user/' . $user_id;
 	}
 
@@ -93,8 +93,7 @@ if($code != 200){
 	foreach($all[$type.'tracks']['track'] as $item) {
 		$id = $item['date']['uts'];
 		$url = htmlspecialchars($item['url']);
-		$published = date(DATE_ATOM, $item['date']['uts']);
-		$updated = date(DATE_ATOM, $item['date']['uts']);
+		$published = gmdate(DATE_RFC822, $item['date']['uts']);
 
 		// Create title
 		$post_title = '';
@@ -118,8 +117,8 @@ if($code != 200){
 		// Create Content
 		$post_content = '';
 		$post_content .= '<p><a href="'.$url.'">' . $item['artist']['name'];
-		if (isset($item['album']['name'])) {
-			$post_content .= ' - ' . $item['album']['name'];
+		if (isset($item['album']['#text'])) {
+			$post_content .= ' - ' . $item['album']['#text'];
 		}
 		$post_content .= ' - ' . $item['name'] . '</a></p>'."\n";
 		if ($item['image'][2]) {
