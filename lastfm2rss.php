@@ -1,5 +1,5 @@
 <?php
-// lastfm2rss 0.0.2
+// lastfm2rss 0.0.3
 
 // You must include an api key
 $api_key = '';
