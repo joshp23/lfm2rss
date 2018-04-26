@@ -139,7 +139,7 @@ if($code != 200){
 				<pubDate><?php echo $published; ?></pubDate>
 				<link><?php echo $url ?></link>
 				<guid isPermaLink="false"><?php echo $url ?></guid>
-				<description><?php echo $post_content?>></description>
+				<description><?php echo $post_content?></description>
 			</item>
 
 		<?php
