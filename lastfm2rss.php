@@ -22,7 +22,7 @@ if (isset($_GET['loved'])) $type = 'loved';
 elseif (isset($_GET['recent'])) $type = 'recent';
 elseif ($type == '') $type = 'recent';
 
-if ($user_id == '' || $api_key = '') die ('Please set parameters');
+if ($user_id == '' || $api_key == '') die ('Please set parameters');
 if ($user_full_name == '') $user_full_name = $user_id;
 
 $postfields = array(
