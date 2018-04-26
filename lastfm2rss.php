@@ -1,5 +1,5 @@
 <?php
-// lastfm2rss 0.0.4
+// lastfm2rss 0.0.5
 
 // You must include an api key
 $api_key = '';
@@ -7,8 +7,8 @@ $api_key = '';
 $user_id = '';
 $user_full_name = '';
 $max_results = 50;
-// Uncomment to set default to loved
-// $type = 'loved';
+// Set default to 'recent' or 'loved'
+$type = 'recent';
 
 // override default user
 if (isset($_GET['user'])) {
@@ -20,7 +20,6 @@ if (isset($_GET['user'])) {
 // override default type
 if (isset($_GET['loved'])) $type = 'loved';
 elseif (isset($_GET['recent'])) $type = 'recent';
-elseif ($type == '') $type = 'recent';
 
 if ($user_id == '' || $api_key == '') die ('Please set parameters');
 if ($user_full_name == '') $user_full_name = $user_id;
