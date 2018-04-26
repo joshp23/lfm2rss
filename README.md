@@ -1,4 +1,4 @@
-# lastfm2rss
+# lfm2rss
 Produce RSS feeds from your Last.fm account
 
 1.  This script requires an [api key for Last.fm](https://www.last.fm/api)
@@ -8,7 +8,7 @@ Produce RSS feeds from your Last.fm account
 
 ## Example url
 
-`https://example.com/lastfm2rss.php?user=jsmitty&name='john smith'&loved`
+`https://example.com/lfm2rss.php?user=jsmitty&name='john smith'&loved`
 
 ### Credit
 Took inspiration from [here](https://github.com/xiffy/lastfmrss) and [here](http://voidstar.com/downloads/lastfm2atomphp.txt)
