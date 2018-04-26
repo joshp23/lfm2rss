@@ -1,5 +1,5 @@
 <?php
-// lastfm2rss 0.0.1
+// lastfm2rss 0.0.2
 
 // You must include an api key
 $api_key = '';
@@ -22,7 +22,7 @@ if (isset($_GET['loved'])) $type = 'loved';
 elseif (isset($_GET['recent'])) $type = 'recent';
 elseif ($type == '') $type = 'recent';
 
-if ($user_id == '' || $api_key = '') die ('Please set parameters')
+if ($user_id == '' || $api_key = '') die ('Please set parameters');
 if ($user_full_name == '') $user_full_name = $user_id;
 
 $postfields = array(
