@@ -1,3 +1,5 @@
+# LASTFM has decided to put their API behind a paywall. Use ListenBrainz instead. 
+
 # lfm2rss
 Produce RSS feeds from your Last.fm account
 
